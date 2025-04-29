@@ -1,0 +1,8 @@
+name: "05 - 2 - Event Filters and Activity Types"
+
+on: 
+  pull_request:
+    types: [closed]
+    brances: 
+      - main
+
