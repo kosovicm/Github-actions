@@ -43,4 +43,6 @@ jobs:
     needs:
       - e2e-tests
       - load-tests
-    run: echo "Deploying to prod..."
+    steps:
+      - name: Deploying to prod
+        run: echo "Deploying to prod..."
