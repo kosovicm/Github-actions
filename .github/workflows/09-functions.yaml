@@ -1,7 +1,6 @@
 name: "09 - Using Functions"
 
 on:
-  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -16,20 +15,19 @@ jobs:
           cat << EOF
           ${{ toJSON(github.event.pull_request.labels)}}
           EOF
+#      - name: test
+#        if: ${{!cancelled()}}  Kada hocemo da negiramo nesto moramo staviti u ${{}}
+#        run: echo "test"
       - name: Bug step
         if: ${{!cancelled() && contains(github.event.pull_request.title, 'fix')}}
         run: |
           echo "I am a bug fix"
-      - name: Sleep for 30 seconds
-        run: sleep 30
-      - name: Failing step
-        run:  exit 1 #non-zero exit code
       - name: I will be skipped
-        if: ${{success()}}
+        if: ${{failure()}}
         run: |
           echo "I will print if any previous steps succeed."
       - name: I will execute
-        if: ${{failure()}}
+        if: ${{success()}}
         run: |
           echo "I will print if any previous step fails."
       - name: I will execute
