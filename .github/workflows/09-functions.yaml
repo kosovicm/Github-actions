@@ -24,3 +24,5 @@ jobs:
           echo "I will alyas print, except when the workflow is cancelled."
       - name: I will execute when cancelled
         if: ${{cancelled()}}
+        run: |
+          echo "Only when workflow has been cancelled"
