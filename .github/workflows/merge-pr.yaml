@@ -1,0 +1,13 @@
+name: "Clean-up resources"
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  clean-up:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clean-up resources
+        run: echo "Cleaning resources after testing PR"
+    
