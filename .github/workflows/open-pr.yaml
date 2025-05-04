@@ -22,4 +22,6 @@ jobs:
     steps:
       - name: Check of steps
         run: |
-          exit 1
+          if ["${{needs.checks.result}}" != "success"]; then
+            exit 1
+          fi
