@@ -26,3 +26,4 @@ jobs:
         run: |
           if ["${{needs.checks.result}}" != "success"]; then
             exit 1
+          fi
