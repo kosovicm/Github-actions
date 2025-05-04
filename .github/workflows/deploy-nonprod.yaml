@@ -2,15 +2,16 @@ name: "Deploy QA/nonprod"
 
 on:
   push:
-    patsh: 04-using-actions/react-app/**
+    paths: 04-using-actions/react-app/**
     branches:
       - master
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        run: actions/checkout@v3
+        run: actions/checkout@v4
       - name: Build
         run: echo "Building starting.."

@@ -2,7 +2,8 @@ name: "Open PR"
 
 on:
   pull_request:
-    types: [opened,edited]
+    types: [opened,synchronized]
+  workflow_dispatch:
 
 jobs:
   checks:
