@@ -5,13 +5,13 @@ on:
     paths: 04-using-actions/react-app/**
     branches:
       - master
-  workflow_dispatch:
+      - 'devops/push-merge,PR-1.0'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        run: actions/checkout@v4
+        uses: actions/checkout@v4
       - name: Build
         run: echo "Building starting.."

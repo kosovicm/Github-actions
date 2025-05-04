@@ -3,7 +3,9 @@ name: "Clean-up resources"
 on:
   pull_request:
     types: [closed]
-  workflow_dispatch:
+  push:
+    branches:
+      - 'devops/push-merge,PR-1.0'
 
 jobs:
   clean-up:
