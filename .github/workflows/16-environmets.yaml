@@ -3,11 +3,11 @@ run-name: 16 - Working with Environmets | env - ${{inputs.target-env}}
 
 on:
   workflow_dispatch:
-  inputs:
-    target-env:
-      type:
-        environment:
-        default: staging
+    inputs:
+      target-env:
+        type:
+          environment:
+          default: staging
   push:
     branches:
       - 'exercise-16'
