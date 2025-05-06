@@ -58,7 +58,7 @@ jobs:
               size: medium
         exclude:
             - color: green
-            - shape: circle
+              shape: circle
 
     steps:
       - name: Dummy step
