@@ -10,7 +10,7 @@ on:
           default: staging
   push:
     branches:
-      - 'exercise-16'
+      - exercise-16
 
 jobs:
   echo:
