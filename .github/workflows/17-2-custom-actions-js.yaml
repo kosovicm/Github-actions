@@ -14,6 +14,8 @@ on:
         type: string
         default: 17-actions/react-app
       debug:
+        type: boolean
+        default: false
   push:
     branches:
       - javascript-custom-action
@@ -34,3 +36,4 @@ jobs:
           target-branch: ${{inputs.target-branch}}
           working-directory: ${{inputs.working-directory}}
           gh-token: ${{secrets.GITHUB_TOKEN}}
+          debug: ${{inputs.debug}}
