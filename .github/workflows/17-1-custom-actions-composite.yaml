@@ -12,7 +12,7 @@ on:
           - prod
   push:
     branches:
-      - exercise-custom-actions
+      - custom-action-composite
 env:
   working-directory: "17-custom-actions/react-app"
 
