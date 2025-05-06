@@ -46,7 +46,11 @@ jobs:
         shape: [circle, square]
         size: [small,large]
         include:
-          - opacity: 75
+          - color: green
+            shape: circle
+          - color: green
+            shape: circle
+            size: medium
     steps:
       - name: Dummy step
         run: |
