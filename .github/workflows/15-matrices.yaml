@@ -7,7 +7,7 @@ on:
       - 'exercise-15'
 jobs:
   backwards-compatibility:
-    name: ${{matrix.os}}-${{matrix.node-version}}
+    name: ${{matrix.os}} - ${{matrix.node-version}}
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
