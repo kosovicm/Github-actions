@@ -5,8 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       target-env:
-        type:
-          environment:
+          type: environment
           default: staging
   push:
     branches:
