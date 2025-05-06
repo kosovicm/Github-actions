@@ -3,6 +3,9 @@ run-name: 17 - 2 - Custom Actions - JS
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - javascript-custom-action
 
 jobs:
   dependendcy-update:
