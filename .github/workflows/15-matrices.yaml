@@ -10,8 +10,9 @@ jobs:
     name: ${{matrix.os}} - ${{matrix.node-version}}
     runs-on: ${{matrix.os}}
     strategy:
+      fail-fast: false ### Kada stavimo false drugi jobs se nastavljaju nema veze ako neki pukne
       matrix:
-        node-verson: [18.x, 20.x, 21.x]
+        node-version: [18.x, 20.x, 21.x]
         os:
           - ubuntu-latest
           - windows-latest
