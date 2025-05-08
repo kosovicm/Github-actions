@@ -6,14 +6,14 @@ runs:
   image: Dockerfile
 
 inputs:
-  url:
+  url: # INPUT_URL
     required: true
     description: URL to ping
-  max_trials:
+  max_trials: # INPUT_MAX_TRIALS
     required: false
     description: Maximum number of trials until action fails
     default: '10'
-  delay:
+  delay: # INPUT_DELAY
     required: false
     description: Delay in seconds between trials
     default: '5'
