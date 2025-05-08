@@ -2,6 +2,9 @@ name: "18 - 2 - Reusable Workflows"
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - reusable-workflows
 
 jobs:
   deploy:
