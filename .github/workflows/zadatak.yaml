@@ -1,0 +1,25 @@
+name: "Create docker image and push to Docker Hub"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - zadatak-docker-runner
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: 
+      image: kosovicm/my-app:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build docker image
+        run: |
+          docker build -t my-app-from-runner
+          echo "Kreiranje docker image-a"
+      - name: Docker tag
+        run: |
+          docker tag my-app-from-runner ${{secrets.DOCKER_USERNAME}}/my-app-from-runner:latest
+      - name: Docker push
+        run: |
+          docker push ${{secrets.DOCKER_USERNAME}}/my-app-from-runner:latest
