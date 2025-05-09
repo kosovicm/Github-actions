@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: 
-      image: my-app:v2
+      image: kosovicm/my-app:v2
     steps:
       - uses: actions/checkout@v4
       
