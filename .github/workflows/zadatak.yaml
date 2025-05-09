@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: 
-      image: kosovicm/my-app:v2
+      image: kosovicm/my-app:latest
     steps:
       - uses: actions/checkout@v4
       
@@ -27,5 +27,5 @@ jobs:
       
       - name: Docker push
         run: |
-          docker tag my-app-from-runner kosovicm/my-}/my-app-from-runner:latest
+          docker tag my-app-from-runner kosovicm/my-app-from-runner:latest
           docker push ${{secrets.DOCKER_USERNAME}}/my-app-from-runner:latest
