@@ -1,0 +1,39 @@
+name: "17 - 2 - Custom Actions - JS"
+run-name: 17 - 2 - Custom Actions - JS | BB - ${{inputs.base-branch}}  TB - ${{inputs.target-branch}} WD - ${{inputs.working-directory}}
+
+on:
+  workflow_dispatch:
+    inputs:
+      base-branch:
+        type: string
+        default: master
+      target-branch:
+        type: string
+        default: update-dependencies
+      working-dir:
+        type: string
+        default: 17-actions/react-app
+      debug:
+        type: boolean
+        default: false
+  push:
+    branches:
+      - javascript-custom-action
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  dependendcy-update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for dependency update
+        uses: ./.github/actions/js-dependency-update
+        with:
+          base-branch: ${{inputs.base-branch}}
+          target-branch: ${{inputs.target-branch}}
+          working-directory: ${{inputs.working-directory}}
+          gh-token: ${{secrets.GITHUB_TOKEN}}
+          debug: ${{inputs.debug}}
