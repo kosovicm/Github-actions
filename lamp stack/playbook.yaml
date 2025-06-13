@@ -1,0 +1,81 @@
+---
+### TODO: NAPRAVITI NOVI SERVER SA STARIJOM VERZIJOM
+- hosts: lamp-server
+  become: true
+  
+  vars:
+    arch_mapping:
+      x86_64: amd64
+      aarch64: arm64
+  
+  tasks:
+    - name: Update cache
+      apt:
+        update_cache: yes
+
+    - name: Install required packages
+      apt:
+        name:
+          - curl
+          - gnupg
+          - apt-transport-https
+          - ca-certificates
+          - software-properties-common
+          - rsync
+        state: latest
+      
+    - name: Create the keyrings directory
+      file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: '0755'
+
+    - name: Download Docker's GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker repository to apt sources
+      copy:
+        content: |
+          deb [arch=amd64] https://download.docker.com/linux/ubuntu jammy stable
+        dest: /etc/apt/sources.list.d/docker.list
+        owner: root
+        group: root
+        mode: '0644'
+    
+    - name: Install Docker packages
+      apt:
+        name:
+          - docker.io
+          - docker-compose
+        state: present
+
+    - name: Enable and start Docker service
+      systemd:
+        name: docker
+        enabled: yes
+        state: started
+    
+    - name: Docker group create
+      group:
+        name: docker
+        state: present
+
+    - name: Add user to docker group
+      user:
+        name: kosovicm
+        groups: docker
+        append: yes
+
+    - name: Synchronize current folder to remote
+      synchronize:
+        src: ./
+        dest: /remote/lamp-stack
+        recursive: yes
+
+    - name: Start Docker Compose
+      shell: docker compose --env-file .env up -d
+      args:
+        chdir: /remote/lamp-stack
+      
